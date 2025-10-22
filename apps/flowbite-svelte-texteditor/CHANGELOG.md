@@ -1,5 +1,11 @@
 # flowbite-svelte-texteditor
 
+## 0.25.6
+
+### Patch Changes
+
+- chore: update @tiptap dependencies
+
 ## 0.25.5
 
 ### Patch Changes
