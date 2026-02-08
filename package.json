@@ -1,5 +1,5 @@
 {
-    "name": "svelte-richtext",
+    "name": "svelte-flowbite-rich-text-editor",
     "version": "0.26.0",
     "description": "Text editor component for Flowbite Svelte",
     "main": "dist/index.js",
