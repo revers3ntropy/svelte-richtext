@@ -1,19 +1,25 @@
 <script lang="ts">
-  import { FontButton, type FontButtonGroupProps } from '$lib';
+    import { FontButton, type FontButtonGroupProps } from '$lib';
 
-  let { editor, showToolbar = true, fontFamily = true, fontSize = true, textColor = true }: FontButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        fontFamily = true,
+        fontSize = true,
+        textColor = true
+    }: FontButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if fontFamily}
-    <FontButton {editor} format="fontFamily" />
-  {/if}
-  {#if fontSize}
-    <FontButton {editor} format="fontSize" />
-  {/if}
-  {#if textColor}
-    <FontButton {editor} format="textColor" />
-  {/if}
+    {#if fontFamily}
+        <FontButton {editor} format="fontFamily" />
+    {/if}
+    {#if fontSize}
+        <FontButton {editor} format="fontSize" />
+    {/if}
+    {#if textColor}
+        <FontButton {editor} format="textColor" />
+    {/if}
 {/if}
 
 <!--

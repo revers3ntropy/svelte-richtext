@@ -1,8 +1,8 @@
 {
-  "name": "Paragraph",
-  "type": {
-    "name": "IconProps",
-    "link": null
-  },
-  "props": [["class: className", ""]]
+    "name": "Paragraph",
+    "type": {
+        "name": "IconProps",
+        "link": null
+    },
+    "props": [["class: className", ""]]
 }

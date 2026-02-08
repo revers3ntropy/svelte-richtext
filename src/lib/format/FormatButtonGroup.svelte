@@ -1,43 +1,57 @@
 <script lang="ts">
-  import { FormatButton, type FormatButtonGroupProps } from '$lib';
+    import { FormatButton, type FormatButtonGroupProps } from '$lib';
 
-  let { editor, showToolbar = true, bold = true, code = true, highlight = true, italic = true, link = true, removeLink = true, strike = true, subscript = true, superscript = true, underline = true, br = true }: FormatButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        bold = true,
+        code = true,
+        highlight = true,
+        italic = true,
+        link = true,
+        removeLink = true,
+        strike = true,
+        subscript = true,
+        superscript = true,
+        underline = true,
+        br = true
+    }: FormatButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if bold}
-    <FormatButton {editor} format="bold" />
-  {/if}
-  {#if code}
-    <FormatButton {editor} format="code" />
-  {/if}
-  {#if highlight}
-    <FormatButton {editor} format="highlight" />
-  {/if}
-  {#if italic}
-    <FormatButton {editor} format="italic" />
-  {/if}
-  {#if link}
-    <FormatButton {editor} format="link" />
-  {/if}
-  {#if removeLink}
-    <FormatButton {editor} format="removeLink" />
-  {/if}
-  {#if strike}
-    <FormatButton {editor} format="strike" />
-  {/if}
-  {#if subscript}
-    <FormatButton {editor} format="subscript" />
-  {/if}
-  {#if superscript}
-    <FormatButton {editor} format="superscript" />
-  {/if}
-  {#if underline}
-    <FormatButton {editor} format="underline" />
-  {/if}
-  {#if br}
-    <FormatButton {editor} format="br" />
-  {/if}
+    {#if bold}
+        <FormatButton {editor} format="bold" />
+    {/if}
+    {#if code}
+        <FormatButton {editor} format="code" />
+    {/if}
+    {#if highlight}
+        <FormatButton {editor} format="highlight" />
+    {/if}
+    {#if italic}
+        <FormatButton {editor} format="italic" />
+    {/if}
+    {#if link}
+        <FormatButton {editor} format="link" />
+    {/if}
+    {#if removeLink}
+        <FormatButton {editor} format="removeLink" />
+    {/if}
+    {#if strike}
+        <FormatButton {editor} format="strike" />
+    {/if}
+    {#if subscript}
+        <FormatButton {editor} format="subscript" />
+    {/if}
+    {#if superscript}
+        <FormatButton {editor} format="superscript" />
+    {/if}
+    {#if underline}
+        <FormatButton {editor} format="underline" />
+    {/if}
+    {#if br}
+        <FormatButton {editor} format="br" />
+    {/if}
 {/if}
 
 <!--

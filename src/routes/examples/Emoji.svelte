@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { UndoRedoButtonGroup, TextEditor, ToolbarRowWrapper } from '$lib';
-  import type { Editor } from '@tiptap/core';
-  import { Button, Heading } from 'flowbite-svelte';
+    import { UndoRedoButtonGroup, TextEditor, ToolbarRowWrapper } from '$lib';
+    import type { Editor } from '@tiptap/core';
+    import { Button, Heading } from 'flowbite-svelte';
 
-  let editorInstance = $state<Editor | null>(null);
+    let editorInstance = $state<Editor | null>(null);
 
-  function getEditorContent() {
-    return editorInstance?.getHTML() ?? '';
-  }
+    function getEditorContent() {
+        return editorInstance?.getHTML() ?? '';
+    }
 
-  function setEditorContent(content: string) {
-    editorInstance?.commands.setContent(content);
-  }
+    function setEditorContent(content: string) {
+        editorInstance?.commands.setContent(content);
+    }
 
-  let content = `
+    let content = `
         <p>
           These <span data-type="emoji" data-name="smiley"></span>
           are <span data-type="emoji" data-name="fire"></span>
@@ -44,12 +44,12 @@
 <Heading tag="h1" class="my-8">Emoji</Heading>
 
 <TextEditor bind:editor={editorInstance} {content} contentprops={{ id: 'emoji-ex' }}>
-  <ToolbarRowWrapper>
-    <UndoRedoButtonGroup editor={editorInstance} />
-  </ToolbarRowWrapper>
+    <ToolbarRowWrapper>
+        <UndoRedoButtonGroup editor={editorInstance} />
+    </ToolbarRowWrapper>
 </TextEditor>
 
 <div class="mt-4">
-  <Button onclick={() => console.log(getEditorContent())}>Get Content</Button>
-  <Button onclick={() => setEditorContent('<p>New content!</p>')}>Set Content</Button>
+    <Button onclick={() => console.log(getEditorContent())}>Get Content</Button>
+    <Button onclick={() => setEditorContent('<p>New content!</p>')}>Set Content</Button>
 </div>

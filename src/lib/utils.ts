@@ -1,12 +1,12 @@
+import { type BubbleMenuConfig, type FloatingMenuConfig } from '$lib';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { type BubbleMenuConfig, type FloatingMenuConfig } from '$lib';
 
 /**
  * Combines clsx and tailwind-merge for intelligent class merging
  */
 export function cn(...inputs: ClassValue[]): string {
-  return twMerge(clsx(inputs));
+    return twMerge(clsx(inputs));
 }
 
 /**
@@ -15,9 +15,9 @@ export function cn(...inputs: ClassValue[]): string {
  * @returns Random string
  */
 export function generateRandomId(length: number = 9): string {
-  return Math.random()
-    .toString(36)
-    .substring(2, 2 + length);
+    return Math.random()
+        .toString(36)
+        .substring(2, 2 + length);
 }
 
 /**
@@ -27,7 +27,7 @@ export function generateRandomId(length: number = 9): string {
  * @returns Unique ID string with format: prefix_randomString
  */
 export function generateUniqueId(prefix: string, length: number = 9): string {
-  return `${prefix}_${generateRandomId(length)}`;
+    return `${prefix}_${generateRandomId(length)}`;
 }
 
 /**
@@ -37,12 +37,14 @@ export function generateUniqueId(prefix: string, length: number = 9): string {
  * @returns Unique button ID
  */
 export function generateButtonId(buttonType: string, length: number = 9): string {
-  return generateUniqueId(`${buttonType}Button`, length);
+    return generateUniqueId(`${buttonType}Button`, length);
 }
 
-export function getMenuConfig(config: boolean | BubbleMenuConfig | FloatingMenuConfig): BubbleMenuConfig | FloatingMenuConfig {
-  if (typeof config === 'boolean') {
-    return config ? {} : {}; // Return default config or empty
-  }
-  return config;
+export function getMenuConfig(
+    config: boolean | BubbleMenuConfig | FloatingMenuConfig
+): BubbleMenuConfig | FloatingMenuConfig {
+    if (typeof config === 'boolean') {
+        return config ? {} : {}; // Return default config or empty
+    }
+    return config;
 }

@@ -1,19 +1,25 @@
 <script lang="ts">
-  import { LayoutButton, type LayoutButtonGroupProps } from '$lib';
+    import { LayoutButton, type LayoutButtonGroupProps } from '$lib';
 
-  let { editor, showToolbar = true, blockquote = true, codeblock = true, hr = true }: LayoutButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        blockquote = true,
+        codeblock = true,
+        hr = true
+    }: LayoutButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if blockquote}
-    <LayoutButton {editor} format="blockquote" />
-  {/if}
-  {#if codeblock}
-    <LayoutButton {editor} format="codeblock" />
-  {/if}
-  {#if hr}
-    <LayoutButton {editor} format="hr" />
-  {/if}
+    {#if blockquote}
+        <LayoutButton {editor} format="blockquote" />
+    {/if}
+    {#if codeblock}
+        <LayoutButton {editor} format="codeblock" />
+    {/if}
+    {#if hr}
+        <LayoutButton {editor} format="hr" />
+    {/if}
 {/if}
 
 <!--

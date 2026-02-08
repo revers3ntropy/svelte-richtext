@@ -1,15 +1,16 @@
 <script lang="ts">
-  import { ExportButton, type ExportButtonGroupProps } from '$lib';
-  let { editor, showToolbar = true, json = true, html = true }: ExportButtonGroupProps = $props();
+    import { ExportButton, type ExportButtonGroupProps } from '$lib';
+
+    let { editor, showToolbar = true, json = true, html = true }: ExportButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if json}
-    <ExportButton {editor} />
-  {/if}
-  {#if html}
-    <ExportButton {editor} format="html" />
-  {/if}
+    {#if json}
+        <ExportButton {editor} />
+    {/if}
+    {#if html}
+        <ExportButton {editor} format="html" />
+    {/if}
 {/if}
 
 <!--

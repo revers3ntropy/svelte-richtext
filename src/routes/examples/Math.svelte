@@ -1,12 +1,12 @@
 <script lang="ts">
-  import 'katex/dist/katex.min.css';
-  import { TextEditor, UndoRedoButtonGroup } from '$lib';
-  import type { Editor } from '@tiptap/core';
-  import { Heading } from 'flowbite-svelte';
+    import 'katex/dist/katex.min.css';
+    import { TextEditor, UndoRedoButtonGroup } from '$lib';
+    import type { Editor } from '@tiptap/core';
+    import { Heading } from 'flowbite-svelte';
 
-  let editorInstance = $state<Editor | null>(null);
+    let editorInstance = $state<Editor | null>(null);
 
-  const content = `
+    const content = `
   <h1>
           This editor supports <span data-type="inline-math" data-latex="\\LaTeX"></span> math expressions. And it even supports converting old $\\sub(3*5=15)$ calculations.
         </h1>
@@ -43,5 +43,5 @@
 <Heading tag="h1" class="my-8">Math</Heading>
 
 <TextEditor bind:editor={editorInstance} {content} math contentprops={{ id: 'math-ex' }}>
-  <UndoRedoButtonGroup editor={editorInstance} />
+    <UndoRedoButtonGroup editor={editorInstance} />
 </TextEditor>

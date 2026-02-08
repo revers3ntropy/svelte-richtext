@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { type ImageButtonGroupProps, ImageButton } from '$lib';
+    import { type ImageButtonGroupProps, ImageButton } from '$lib';
 
-  let { editor, showToolbar = true, basic = true, advanced = true }: ImageButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        basic = true,
+        advanced = true
+    }: ImageButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if basic}
-    <ImageButton {editor} />
-  {/if}
-  {#if advanced}
-    <ImageButton {editor} format="advanced" />
-  {/if}
+    {#if basic}
+        <ImageButton {editor} />
+    {/if}
+    {#if advanced}
+        <ImageButton {editor} format="advanced" />
+    {/if}
 {/if}
 
 <!--

@@ -1,14 +1,14 @@
 {
-  "name": "AlignRight",
-  "type": {
-    "name": "EditorBasicProps",
-    "link": "https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L78"
-  },
-  "props": [
-    ["editor", ""],
-    ["tooltipText", "'Align right'"],
-    ["ariaLabel", "'Align right'"],
-    ["id", ""],
-    ["class: className", ""]
-  ]
+    "name": "AlignRight",
+    "type": {
+        "name": "EditorBasicProps",
+        "link": "https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L78"
+    },
+    "props": [
+        ["editor", ""],
+        ["tooltipText", "'Align right'"],
+        ["ariaLabel", "'Align right'"],
+        ["id", ""],
+        ["class: className", ""]
+    ]
 }

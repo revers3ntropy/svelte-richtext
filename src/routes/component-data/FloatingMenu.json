@@ -1,20 +1,20 @@
 {
-  "name": "FloatingMenu",
-  "type": {
-    "name": "FloatingMenuProps & { autoSetup?: boolean }",
-    "link": null
-  },
-  "props": [
-    ["editor", ""],
-    ["headingsOnly", "false"],
-    ["showHeadings", "true"],
-    ["showList", "true"],
-    ["showCodeBlock", "true"],
-    ["showQuote", "true"],
-    ["showHorizontalRule", "true"],
-    ["showTable", "true"],
-    ["showTasks", "true"],
-    ["showImage", "true"],
-    ["autoSetup", "true"]
-  ]
+    "name": "FloatingMenu",
+    "type": {
+        "name": "FloatingMenuProps & { autoSetup?: boolean }",
+        "link": null
+    },
+    "props": [
+        ["editor", ""],
+        ["headingsOnly", "false"],
+        ["showHeadings", "true"],
+        ["showList", "true"],
+        ["showCodeBlock", "true"],
+        ["showQuote", "true"],
+        ["showHorizontalRule", "true"],
+        ["showTable", "true"],
+        ["showTasks", "true"],
+        ["showImage", "true"],
+        ["autoSetup", "true"]
+    ]
 }

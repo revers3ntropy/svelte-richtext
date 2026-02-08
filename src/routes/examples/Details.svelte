@@ -1,19 +1,19 @@
 <script lang="ts">
-  import { DetailsButtonGroup, TextEditor } from '$lib';
-  import type { Editor } from '@tiptap/core';
-  import { Button, Heading } from 'flowbite-svelte';
+    import { DetailsButtonGroup, TextEditor } from '$lib';
+    import type { Editor } from '@tiptap/core';
+    import { Button, Heading } from 'flowbite-svelte';
 
-  let editorInstance = $state<Editor | null>(null);
+    let editorInstance = $state<Editor | null>(null);
 
-  function getEditorContent() {
-    return editorInstance?.getHTML() ?? '';
-  }
+    function getEditorContent() {
+        return editorInstance?.getHTML() ?? '';
+    }
 
-  function setEditorContent(content: string) {
-    editorInstance?.commands.setContent(content);
-  }
+    function setEditorContent(content: string) {
+        editorInstance?.commands.setContent(content);
+    }
 
-  const content = `
+    const content = `
       <p>Look at these details</p>
       <details>
         <summary>This is a summary</summary>
@@ -34,10 +34,10 @@
 <Heading tag="h1" class="my-8">Details</Heading>
 
 <TextEditor bind:editor={editorInstance} {content} contentprops={{ id: 'details-ex' }}>
-  <DetailsButtonGroup editor={editorInstance} />
+    <DetailsButtonGroup editor={editorInstance} />
 </TextEditor>
 
 <div class="mt-4">
-  <Button onclick={() => console.log(getEditorContent())}>Get Content</Button>
-  <Button onclick={() => setEditorContent('<p>New content!</p>')}>Set Content</Button>
+    <Button onclick={() => console.log(getEditorContent())}>Get Content</Button>
+    <Button onclick={() => setEditorContent('<p>New content!</p>')}>Set Content</Button>
 </div>

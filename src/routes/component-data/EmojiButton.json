@@ -1,14 +1,14 @@
 {
-  "name": "EmojiButton",
-  "type": {
-    "name": "EmojiButtonProps",
-    "link": null
-  },
-  "props": [
-    ["editor", ""],
-    ["tooltipText", ""],
-    ["ariaLabel", ""],
-    ["id", ""],
-    ["class: className", ""]
-  ]
+    "name": "EmojiButton",
+    "type": {
+        "name": "EmojiButtonProps",
+        "link": null
+    },
+    "props": [
+        ["editor", ""],
+        ["tooltipText", ""],
+        ["ariaLabel", ""],
+        ["id", ""],
+        ["class: className", ""]
+    ]
 }

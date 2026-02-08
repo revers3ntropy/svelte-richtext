@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { HtmlCodeButton, SourceButton, type SourceButtonGroupProps } from '$lib';
+    import { HtmlCodeButton, SourceButton, type SourceButtonGroupProps } from '$lib';
 
-  let { editor, showToolbar = true, source = true, html = true }: SourceButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        source = true,
+        html = true
+    }: SourceButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if source}
-    <SourceButton {editor} />
-  {/if}
-  {#if html}
-    <HtmlCodeButton {editor} />
-  {/if}
+    {#if source}
+        <SourceButton {editor} />
+    {/if}
+    {#if html}
+        <HtmlCodeButton {editor} />
+    {/if}
 {/if}
 
 <!--

@@ -1,38 +1,49 @@
 <script lang="ts">
-  import { type TableButtonGroupProps, TableButton, Divider } from '$lib';
+    import { type TableButtonGroupProps, TableButton, Divider } from '$lib';
 
-  let { editor, showToolbar = true, table = true, deleteTable = true, addColumnBefore = true, addColumnAfter = true, deleteColumn = true, addRowBefore = true, addRowAfter = true, deleteRow = true }: TableButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        table = true,
+        deleteTable = true,
+        addColumnBefore = true,
+        addColumnAfter = true,
+        deleteColumn = true,
+        addRowBefore = true,
+        addRowAfter = true,
+        deleteRow = true
+    }: TableButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if table}
-    <TableButton {editor} />
-  {/if}
-  {#if deleteTable}
-    <TableButton {editor} action="deleteTable" />
-  {/if}
+    {#if table}
+        <TableButton {editor} />
+    {/if}
+    {#if deleteTable}
+        <TableButton {editor} action="deleteTable" />
+    {/if}
 
-  <Divider />
-  {#if addColumnBefore}
-    <TableButton {editor} action="addColumnBefore" />
-  {/if}
-  {#if addColumnAfter}
-    <TableButton {editor} action="addColumnAfter" />
-  {/if}
-  {#if deleteColumn}
-    <TableButton {editor} action="deleteColumn" />
-  {/if}
+    <Divider />
+    {#if addColumnBefore}
+        <TableButton {editor} action="addColumnBefore" />
+    {/if}
+    {#if addColumnAfter}
+        <TableButton {editor} action="addColumnAfter" />
+    {/if}
+    {#if deleteColumn}
+        <TableButton {editor} action="deleteColumn" />
+    {/if}
 
-  <Divider />
-  {#if addRowBefore}
-    <TableButton {editor} action="addRowBefore" />
-  {/if}
-  {#if addRowAfter}
-    <TableButton {editor} action="addRowAfter" />
-  {/if}
-  {#if deleteRow}
-    <TableButton {editor} action="deleteRow" />
-  {/if}
+    <Divider />
+    {#if addRowBefore}
+        <TableButton {editor} action="addRowBefore" />
+    {/if}
+    {#if addRowAfter}
+        <TableButton {editor} action="addRowAfter" />
+    {/if}
+    {#if deleteRow}
+        <TableButton {editor} action="deleteRow" />
+    {/if}
 {/if}
 
 <!--

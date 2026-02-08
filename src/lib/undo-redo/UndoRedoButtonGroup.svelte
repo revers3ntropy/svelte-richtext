@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { type UndoRedoButtonGroupProps, UndoRedo } from '$lib';
+    import { type UndoRedoButtonGroupProps, UndoRedo } from '$lib';
 
-  let { editor, showToolbar = true, undo = true, redo = true }: UndoRedoButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        undo = true,
+        redo = true
+    }: UndoRedoButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if undo}
-    <UndoRedo {editor} action="undo" />
-  {/if}
-  {#if redo}
-    <UndoRedo {editor} action="redo" />
-  {/if}
+    {#if undo}
+        <UndoRedo {editor} action="undo" />
+    {/if}
+    {#if redo}
+        <UndoRedo {editor} action="redo" />
+    {/if}
 {/if}
 
 <!--

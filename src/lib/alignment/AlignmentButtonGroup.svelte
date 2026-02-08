@@ -1,21 +1,29 @@
 <script lang="ts">
-  import { AlignmentButton, type AlignmentButtonGroupProps } from '$lib';
-  let { editor, showToolbar = true, left = true, center = true, right = true, justify = true }: AlignmentButtonGroupProps = $props();
+    import { AlignmentButton, type AlignmentButtonGroupProps } from '$lib';
+
+    let {
+        editor,
+        showToolbar = true,
+        left = true,
+        center = true,
+        right = true,
+        justify = true
+    }: AlignmentButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if left}
-    <AlignmentButton {editor} alignment="left" />
-  {/if}
-  {#if center}
-    <AlignmentButton {editor} alignment="center" />
-  {/if}
-  {#if right}
-    <AlignmentButton {editor} alignment="right" />
-  {/if}
-  {#if justify}
-    <AlignmentButton {editor} alignment="justify" />
-  {/if}
+    {#if left}
+        <AlignmentButton {editor} alignment="left" />
+    {/if}
+    {#if center}
+        <AlignmentButton {editor} alignment="center" />
+    {/if}
+    {#if right}
+        <AlignmentButton {editor} alignment="right" />
+    {/if}
+    {#if justify}
+        <AlignmentButton {editor} alignment="justify" />
+    {/if}
 {/if}
 
 <!--

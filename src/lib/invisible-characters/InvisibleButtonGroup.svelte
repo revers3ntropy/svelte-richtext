@@ -1,18 +1,25 @@
 <script lang="ts">
-  import { InvisibleButton, type InvisibleButtonGroupProps } from '$lib';
-  let { editor, showToolbar = true, toggle = true, show = true, hide = true }: InvisibleButtonGroupProps = $props();
+    import { InvisibleButton, type InvisibleButtonGroupProps } from '$lib';
+
+    let {
+        editor,
+        showToolbar = true,
+        toggle = true,
+        show = true,
+        hide = true
+    }: InvisibleButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if toggle}
-    <InvisibleButton {editor} action="toggle" />
-  {/if}
-  {#if show}
-    <InvisibleButton {editor} action="show" />
-  {/if}
-  {#if hide}
-    <InvisibleButton {editor} action="hide" />
-  {/if}
+    {#if toggle}
+        <InvisibleButton {editor} action="toggle" />
+    {/if}
+    {#if show}
+        <InvisibleButton {editor} action="show" />
+    {/if}
+    {#if hide}
+        <InvisibleButton {editor} action="hide" />
+    {/if}
 {/if}
 
 <!--

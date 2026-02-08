@@ -1,116 +1,125 @@
-import { mount, unmount } from 'svelte';
 import type { Editor } from '@tiptap/core';
-import type { SuggestionOptions, SuggestionProps, SuggestionKeyDownProps } from '@tiptap/suggestion';
+import type {
+    SuggestionOptions,
+    SuggestionProps,
+    SuggestionKeyDownProps
+} from '@tiptap/suggestion';
+import { mount, unmount } from 'svelte';
 import EmojiList from './EmojiList.svelte';
 
 interface EmojiItem {
-  name: string;
-  emoji?: string;
-  shortcodes: string[];
-  tags?: string[];
-  fallbackImage?: string;
+    name: string;
+    emoji?: string;
+    shortcodes: string[];
+    tags?: string[];
+    fallbackImage?: string;
 }
 
 export default {
-  items: ({ editor, query }: { editor: Editor; query: string }): EmojiItem[] => {
-    const cleanQuery = query.toLowerCase().trim().replace(/^:|:$/g, '');
+    items: ({ editor, query }: { editor: Editor; query: string }): EmojiItem[] => {
+        const cleanQuery = query.toLowerCase().trim().replace(/^:|:$/g, '');
 
-    // Type assertion to access emoji storage
-    const emojiStorage = (editor.storage as any).emoji;
+        // Type assertion to access emoji storage
+        const emojiStorage = (editor.storage as any).emoji;
 
-    if (!emojiStorage?.emojis) {
-      return [];
-    }
+        if (!emojiStorage?.emojis) {
+            return [];
+        }
 
-    if (!cleanQuery) {
-      return emojiStorage.emojis.slice(0, 5);
-    }
+        if (!cleanQuery) {
+            return emojiStorage.emojis.slice(0, 5);
+        }
 
-    const filtered = emojiStorage.emojis.filter((item: EmojiItem) => {
-      return item.shortcodes.some((shortcode: string) => shortcode.toLowerCase().startsWith(cleanQuery)) || item.tags?.some((tag: string) => tag.toLowerCase().startsWith(cleanQuery));
-    });
-
-    return filtered.slice(0, 5);
-  },
-
-  render: () => {
-    let component: any;
-    let element: HTMLElement;
-
-    const createWrappedCommand = (props: SuggestionProps<EmojiItem>) => (args: { name: string }) => {
-      const emojiItem = props.items.find((item: EmojiItem) => item.name === args.name);
-      if (emojiItem) {
-        props.command({
-          name: args.name,
-          emoji: emojiItem.emoji || emojiItem.fallbackImage || '😶'
+        const filtered = emojiStorage.emojis.filter((item: EmojiItem) => {
+            return (
+                item.shortcodes.some((shortcode: string) =>
+                    shortcode.toLowerCase().startsWith(cleanQuery)
+                ) || item.tags?.some((tag: string) => tag.toLowerCase().startsWith(cleanQuery))
+            );
         });
-      }
-    };
 
-    const mountComponent = (props: SuggestionProps<EmojiItem>) => {
-      if (component) {
-        unmount(component);
-      }
+        return filtered.slice(0, 5);
+    },
 
-      component = mount(EmojiList, {
-        target: element,
-        props: {
-          items: props.items,
-          command: createWrappedCommand(props),
-          editor: props.editor
-        }
-      });
-    };
+    render: () => {
+        let component: any;
+        let element: HTMLElement;
 
-    const positionElement = (props: SuggestionProps<EmojiItem>) => {
-      const rect = props.clientRect?.();
-      if (rect && element) {
-        element.style.position = 'absolute';
-        element.style.top = `${rect.bottom + window.scrollY}px`;
-        element.style.left = `${rect.left + window.scrollX}px`;
-        element.style.zIndex = '1000';
-      }
-    };
+        const createWrappedCommand =
+            (props: SuggestionProps<EmojiItem>) => (args: { name: string }) => {
+                const emojiItem = props.items.find((item: EmojiItem) => item.name === args.name);
+                if (emojiItem) {
+                    props.command({
+                        name: args.name,
+                        emoji: emojiItem.emoji || emojiItem.fallbackImage || '😶'
+                    });
+                }
+            };
 
-    return {
-      onStart: (props: SuggestionProps<EmojiItem>) => {
-        element = document.createElement('div');
-        element.className = 'emoji-suggestion-popup';
+        const mountComponent = (props: SuggestionProps<EmojiItem>) => {
+            if (component) {
+                unmount(component);
+            }
 
-        mountComponent(props);
+            component = mount(EmojiList, {
+                target: element,
+                props: {
+                    items: props.items,
+                    command: createWrappedCommand(props),
+                    editor: props.editor
+                }
+            });
+        };
 
-        // Append to body and position
-        document.body.appendChild(element);
-        positionElement(props);
-      },
+        const positionElement = (props: SuggestionProps<EmojiItem>) => {
+            const rect = props.clientRect?.();
+            if (rect && element) {
+                element.style.position = 'absolute';
+                element.style.top = `${rect.bottom + window.scrollY}px`;
+                element.style.left = `${rect.left + window.scrollX}px`;
+                element.style.zIndex = '1000';
+            }
+        };
 
-      onUpdate: (props: SuggestionProps<EmojiItem>) => {
-        if (component?.updateItems) {
-          component.updateItems(props.items);
-          component.updateCommand?.(createWrappedCommand(props));
-        } else {
-          mountComponent(props);
-        }
+        return {
+            onStart: (props: SuggestionProps<EmojiItem>) => {
+                element = document.createElement('div');
+                element.className = 'emoji-suggestion-popup';
 
-        positionElement(props);
-      },
+                mountComponent(props);
 
-      onKeyDown: (props: SuggestionKeyDownProps): boolean => {
-        if (props.event.key === 'Escape') {
-          return true;
-        }
+                // Append to body and position
+                document.body.appendChild(element);
+                positionElement(props);
+            },
 
-        return component?.onKeyDown?.(props) ?? false;
-      },
+            onUpdate: (props: SuggestionProps<EmojiItem>) => {
+                if (component?.updateItems) {
+                    component.updateItems(props.items);
+                    component.updateCommand?.(createWrappedCommand(props));
+                } else {
+                    mountComponent(props);
+                }
 
-      onExit: () => {
-        if (element && element.parentNode) {
-          element.parentNode.removeChild(element);
-        }
-        if (component) {
-          unmount(component);
-        }
-      }
-    };
-  }
+                positionElement(props);
+            },
+
+            onKeyDown: (props: SuggestionKeyDownProps): boolean => {
+                if (props.event.key === 'Escape') {
+                    return true;
+                }
+
+                return component?.onKeyDown?.(props) ?? false;
+            },
+
+            onExit: () => {
+                if (element && element.parentNode) {
+                    element.parentNode.removeChild(element);
+                }
+                if (component) {
+                    unmount(component);
+                }
+            }
+        };
+    }
 } satisfies Omit<SuggestionOptions<EmojiItem, any>, 'editor'>;

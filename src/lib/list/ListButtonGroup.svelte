@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { ListButton, type ListButtonGroupProps } from '$lib';
+    import { ListButton, type ListButtonGroupProps } from '$lib';
 
-  let { editor, showToolbar = true, bullet = true, ordered = true }: ListButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        bullet = true,
+        ordered = true
+    }: ListButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if bullet}
-    <ListButton {editor} format="bullet" />
-  {/if}
-  {#if ordered}
-    <ListButton {editor} format="ordered" />
-  {/if}
+    {#if bullet}
+        <ListButton {editor} format="bullet" />
+    {/if}
+    {#if ordered}
+        <ListButton {editor} format="ordered" />
+    {/if}
 {/if}
 
 <!--

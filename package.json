@@ -1,363 +1,357 @@
 {
-  "name": "svelte-richtext",
-  "version": "0.26.0",
-  "description": "Text editor component for Flowbite Svelte",
-  "main": "dist/index.js",
-  "author": {
-    "name": "Shinichi Okada",
-    "url": "https://blog.codewithshin.com"
-  },
-  "bugs": "https://github.com/shinokada/flowbite-svelte-plugins/issues",
-  "homepage": "https://flowbite-svelte.com/docs/plugins/wysiwyg",
-  "license": "MIT",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build && npm run package",
-    "preview": "vite preview",
-    "prepare": "svelte-kit sync || echo ''",
-    "package": "svelte-kit sync && svelte-package && publint",
-    "package:watch": "svelte-kit sync && svelte-package --watch",
-    "check": "svelte-kit sync && svelte-check --tsconfig tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig tsconfig.json --watch",
-    "format": "prettier --write .",
-    "lint": "prettier --check . && eslint .",
-    "test:unit": "vitest",
-    "test": "npm run test:unit -- --run && npm run test:e2e",
-    "test:e2e": "playwright test",
-    "gen:exports": "svelte-lib-helpers exports",
-    "gen:docspropvalue": "svelte-lib-helpers docspropvalue shinokada/flowbite-svelte-plugins",
-    "gen:component-data-prop-value": "svelte-lib-helpers component-data-prop-value themesberg/flowbite-svelte",
-    "copy:packagejson": "svelte-lib-helpers package",
-    "lib-helpers": "pnpm gen:component-data-prop-value && pnpm gen:docspropvalue && pnpm format && pnpm package && pnpm gen:exports && pnpm copy:packagejson && pnpm llm",
-    "llm": "svelte-doc-llm"
-  },
-  "files": [
-    "dist",
-    "!dist/**/*.test.*",
-    "!dist/**/*.spec.*"
-  ],
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "svelte": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "type": "module",
-  "peerDependencies": {
-    "svelte": "^5.0.0",
-    "tailwindcss": "^4.1.4"
-  },
-  "devDependencies": {
-    "@eslint/compat": "^2.0.2",
-    "@eslint/js": "^9.39.2",
-    "@playwright/test": "^1.58.2",
-    "@sveltejs/adapter-auto": "^7.0.0",
-    "@sveltejs/kit": "^2.50.2",
-    "@sveltejs/package": "^2.5.7",
-    "@sveltejs/vite-plugin-svelte": "^6.2.4",
-    "@tailwindcss/vite": "^4.1.18",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/svelte": "^5.3.1",
-    "@vitest/browser": "^4.0.18",
-    "clsx": "^2.1.1",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-svelte": "3.11.0",
-    "flowbite": "^4.0.1",
-    "flowbite-svelte": "^1.31.0",
-    "flowbite-svelte-icons": "^3.1.0",
-    "globals": "^17.3.0",
-    "jsdom": "^28.0.0",
-    "prettier": "^3.8.1",
-    "prettier-plugin-svelte": "^3.4.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "publint": "^0.3.17",
-    "runes-meta-tags": "^0.5.0",
-    "svelte": "^5.50.0",
-    "svelte-check": "^4.3.6",
-    "svelte-doc-llm": "^0.8.0",
-    "svelte-lib-helpers": "^0.4.31",
-    "tailwind-merge": "^3.4.0",
-    "tailwindcss": "^4.1.18",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
-    "vite": "^7.3.1",
-    "vite-plugin-devtools-json": "^1.0.0",
-    "vitest": "^4.0.18",
-    "vitest-browser-svelte": "^2.0.2"
-  },
-  "dependencies": {
-    "@tiptap/core": "3.19.0",
-    "@tiptap/extension-blockquote": "3.19.0",
-    "@tiptap/extension-bold": "3.19.0",
-    "@tiptap/extension-bubble-menu": "3.19.0",
-    "@tiptap/extension-bullet-list": "3.19.0",
-    "@tiptap/extension-character-count": "3.19.0",
-    "@tiptap/extension-code": "3.19.0",
-    "@tiptap/extension-code-block": "3.19.0",
-    "@tiptap/extension-code-block-lowlight": "3.19.0",
-    "@tiptap/extension-color": "3.19.0",
-    "@tiptap/extension-details": "3.19.0",
-    "@tiptap/extension-document": "3.19.0",
-    "@tiptap/extension-drag-handle": "3.19.0",
-    "@tiptap/extension-dropcursor": "3.19.0",
-    "@tiptap/extension-emoji": "3.19.0",
-    "@tiptap/extension-file-handler": "3.19.0",
-    "@tiptap/extension-floating-menu": "3.19.0",
-    "@tiptap/extension-focus": "3.19.0",
-    "@tiptap/extension-font-family": "3.19.0",
-    "@tiptap/extension-gapcursor": "3.19.0",
-    "@tiptap/extension-hard-break": "3.19.0",
-    "@tiptap/extension-heading": "3.19.0",
-    "@tiptap/extension-highlight": "3.19.0",
-    "@tiptap/extension-history": "3.19.0",
-    "@tiptap/extension-horizontal-rule": "3.19.0",
-    "@tiptap/extension-image": "3.19.0",
-    "@tiptap/extension-invisible-characters": "3.19.0",
-    "@tiptap/extension-italic": "3.19.0",
-    "@tiptap/extension-link": "3.19.0",
-    "@tiptap/extension-list": "3.19.0",
-    "@tiptap/extension-list-item": "3.19.0",
-    "@tiptap/extension-list-keymap": "3.19.0",
-    "@tiptap/extension-mathematics": "3.19.0",
-    "@tiptap/extension-mention": "3.19.0",
-    "@tiptap/extension-node-range": "3.19.0",
-    "@tiptap/extension-ordered-list": "3.19.0",
-    "@tiptap/extension-paragraph": "3.19.0",
-    "@tiptap/extension-placeholder": "3.19.0",
-    "@tiptap/extension-strike": "3.19.0",
-    "@tiptap/extension-subscript": "3.19.0",
-    "@tiptap/extension-superscript": "3.19.0",
-    "@tiptap/extension-table": "3.19.0",
-    "@tiptap/extension-table-cell": "3.19.0",
-    "@tiptap/extension-table-header": "3.19.0",
-    "@tiptap/extension-table-of-contents": "3.19.0",
-    "@tiptap/extension-table-row": "3.19.0",
-    "@tiptap/extension-task-item": "3.19.0",
-    "@tiptap/extension-task-list": "3.19.0",
-    "@tiptap/extension-text": "3.19.0",
-    "@tiptap/extension-text-align": "3.19.0",
-    "@tiptap/extension-text-style": "3.19.0",
-    "@tiptap/extension-typography": "3.19.0",
-    "@tiptap/extension-underline": "3.19.0",
-    "@tiptap/extension-youtube": "3.19.0",
-    "@tiptap/extensions": "3.19.0",
-    "@tiptap/pm": "3.19.0",
-    "@tiptap/starter-kit": "3.19.0",
-    "@tiptap/suggestion": "3.19.0",
-    "flowbite-typography": "^1.0.5",
-    "katex": "^0.16.28",
-    "lowlight": "^3.3.0"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.js"
+    "name": "svelte-richtext",
+    "version": "0.26.0",
+    "description": "Text editor component for Flowbite Svelte",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "vite dev",
+        "build": "vite build && npm run package",
+        "preview": "vite preview",
+        "prepare": "svelte-kit sync || echo ''",
+        "package": "svelte-kit sync && svelte-package && publint",
+        "package:watch": "svelte-kit sync && svelte-package --watch",
+        "check": "svelte-kit sync && svelte-check --tsconfig tsconfig.json",
+        "check:watch": "svelte-kit sync && svelte-check --tsconfig tsconfig.json --watch",
+        "format": "prettier --write .",
+        "lint": "prettier --check . && eslint .",
+        "test:unit": "vitest",
+        "test": "npm run test:unit -- --run && npm run test:e2e",
+        "test:e2e": "playwright test",
+        "gen:exports": "svelte-lib-helpers exports",
+        "gen:docspropvalue": "svelte-lib-helpers docspropvalue shinokada/flowbite-svelte-plugins",
+        "gen:component-data-prop-value": "svelte-lib-helpers component-data-prop-value themesberg/flowbite-svelte",
+        "copy:packagejson": "svelte-lib-helpers package",
+        "lib-helpers": "pnpm gen:component-data-prop-value && pnpm gen:docspropvalue && pnpm format && pnpm package && pnpm gen:exports && pnpm copy:packagejson && pnpm llm",
+        "llm": "svelte-doc-llm"
     },
-    "./types": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/types.js",
-      "default": "./dist/types.js"
+    "files": [
+        "dist",
+        "!dist/**/*.test.*",
+        "!dist/**/*.spec.*"
+    ],
+    "sideEffects": [
+        "**/*.css"
+    ],
+    "svelte": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
+    "peerDependencies": {
+        "svelte": "^5.0.0",
+        "tailwindcss": "^4.1.4"
     },
-    "./EditorConfig.svelte": {
-      "types": "./dist/EditorConfig.svelte.d.ts",
-      "svelte": "./dist/EditorConfig.svelte"
+    "devDependencies": {
+        "@eslint/compat": "^2.0.2",
+        "@eslint/js": "^9.39.2",
+        "@playwright/test": "^1.58.2",
+        "@sveltejs/adapter-auto": "^7.0.0",
+        "@sveltejs/kit": "^2.50.2",
+        "@sveltejs/package": "^2.5.7",
+        "@sveltejs/vite-plugin-svelte": "^6.2.4",
+        "@tailwindcss/vite": "^4.1.18",
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/svelte": "^5.3.1",
+        "@vitest/browser": "^4.0.18",
+        "clsx": "^2.1.1",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-svelte": "3.11.0",
+        "flowbite": "^4.0.1",
+        "flowbite-svelte": "^1.31.0",
+        "flowbite-svelte-icons": "^3.1.0",
+        "globals": "^17.3.0",
+        "jsdom": "^28.0.0",
+        "prettier": "^3.8.1",
+        "prettier-plugin-svelte": "^3.4.1",
+        "prettier-plugin-tailwindcss": "^0.7.2",
+        "publint": "^0.3.17",
+        "runes-meta-tags": "^0.5.0",
+        "svelte": "^5.50.0",
+        "svelte-check": "^4.3.6",
+        "svelte-doc-llm": "^0.8.0",
+        "svelte-lib-helpers": "^0.4.31",
+        "tailwind-merge": "^3.4.0",
+        "tailwindcss": "^4.1.18",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.54.0",
+        "vite": "^7.3.1",
+        "vite-plugin-devtools-json": "^1.0.0",
+        "vitest": "^4.0.18",
+        "vitest-browser-svelte": "^2.0.2"
     },
-    "./TextEditor.svelte": {
-      "types": "./dist/TextEditor.svelte.d.ts",
-      "svelte": "./dist/TextEditor.svelte"
+    "dependencies": {
+        "@tiptap/core": "3.19.0",
+        "@tiptap/extension-blockquote": "3.19.0",
+        "@tiptap/extension-bold": "3.19.0",
+        "@tiptap/extension-bubble-menu": "3.19.0",
+        "@tiptap/extension-bullet-list": "3.19.0",
+        "@tiptap/extension-character-count": "3.19.0",
+        "@tiptap/extension-code": "3.19.0",
+        "@tiptap/extension-code-block": "3.19.0",
+        "@tiptap/extension-code-block-lowlight": "3.19.0",
+        "@tiptap/extension-color": "3.19.0",
+        "@tiptap/extension-details": "3.19.0",
+        "@tiptap/extension-document": "3.19.0",
+        "@tiptap/extension-drag-handle": "3.19.0",
+        "@tiptap/extension-dropcursor": "3.19.0",
+        "@tiptap/extension-emoji": "3.19.0",
+        "@tiptap/extension-file-handler": "3.19.0",
+        "@tiptap/extension-floating-menu": "3.19.0",
+        "@tiptap/extension-focus": "3.19.0",
+        "@tiptap/extension-font-family": "3.19.0",
+        "@tiptap/extension-gapcursor": "3.19.0",
+        "@tiptap/extension-hard-break": "3.19.0",
+        "@tiptap/extension-heading": "3.19.0",
+        "@tiptap/extension-highlight": "3.19.0",
+        "@tiptap/extension-history": "3.19.0",
+        "@tiptap/extension-horizontal-rule": "3.19.0",
+        "@tiptap/extension-image": "3.19.0",
+        "@tiptap/extension-invisible-characters": "3.19.0",
+        "@tiptap/extension-italic": "3.19.0",
+        "@tiptap/extension-link": "3.19.0",
+        "@tiptap/extension-list": "3.19.0",
+        "@tiptap/extension-list-item": "3.19.0",
+        "@tiptap/extension-list-keymap": "3.19.0",
+        "@tiptap/extension-mathematics": "3.19.0",
+        "@tiptap/extension-mention": "3.19.0",
+        "@tiptap/extension-node-range": "3.19.0",
+        "@tiptap/extension-ordered-list": "3.19.0",
+        "@tiptap/extension-paragraph": "3.19.0",
+        "@tiptap/extension-placeholder": "3.19.0",
+        "@tiptap/extension-strike": "3.19.0",
+        "@tiptap/extension-subscript": "3.19.0",
+        "@tiptap/extension-superscript": "3.19.0",
+        "@tiptap/extension-table": "3.19.0",
+        "@tiptap/extension-table-cell": "3.19.0",
+        "@tiptap/extension-table-header": "3.19.0",
+        "@tiptap/extension-table-of-contents": "3.19.0",
+        "@tiptap/extension-table-row": "3.19.0",
+        "@tiptap/extension-task-item": "3.19.0",
+        "@tiptap/extension-task-list": "3.19.0",
+        "@tiptap/extension-text": "3.19.0",
+        "@tiptap/extension-text-align": "3.19.0",
+        "@tiptap/extension-text-style": "3.19.0",
+        "@tiptap/extension-typography": "3.19.0",
+        "@tiptap/extension-underline": "3.19.0",
+        "@tiptap/extension-youtube": "3.19.0",
+        "@tiptap/extensions": "3.19.0",
+        "@tiptap/pm": "3.19.0",
+        "@tiptap/starter-kit": "3.19.0",
+        "@tiptap/suggestion": "3.19.0",
+        "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+        "flowbite-typography": "^1.0.5",
+        "katex": "^0.16.28",
+        "lowlight": "^3.3.0"
     },
-    "./AlignmentButton.svelte": {
-      "types": "./dist/alignment/AlignmentButton.svelte.d.ts",
-      "svelte": "./dist/alignment/AlignmentButton.svelte"
-    },
-    "./AlignmentButtonGroup.svelte": {
-      "types": "./dist/alignment/AlignmentButtonGroup.svelte.d.ts",
-      "svelte": "./dist/alignment/AlignmentButtonGroup.svelte"
-    },
-    "./BubbleMenu.svelte": {
-      "types": "./dist/bubble-menu/BubbleMenu.svelte.d.ts",
-      "svelte": "./dist/bubble-menu/BubbleMenu.svelte"
-    },
-    "./CharacterCount.svelte": {
-      "types": "./dist/charcter-count/CharacterCount.svelte.d.ts",
-      "svelte": "./dist/charcter-count/CharacterCount.svelte"
-    },
-    "./DetailsButton.svelte": {
-      "types": "./dist/details/DetailsButton.svelte.d.ts",
-      "svelte": "./dist/details/DetailsButton.svelte"
-    },
-    "./DetailsButtonGroup.svelte": {
-      "types": "./dist/details/DetailsButtonGroup.svelte.d.ts",
-      "svelte": "./dist/details/DetailsButtonGroup.svelte"
-    },
-    "./DragHandle.svelte": {
-      "types": "./dist/drag-handle/DragHandle.svelte.d.ts",
-      "svelte": "./dist/drag-handle/DragHandle.svelte"
-    },
-    "./EditableButton.svelte": {
-      "types": "./dist/editable/EditableButton.svelte.d.ts",
-      "svelte": "./dist/editable/EditableButton.svelte"
-    },
-    "./EmojiList.svelte": {
-      "types": "./dist/emoji/EmojiList.svelte.d.ts",
-      "svelte": "./dist/emoji/EmojiList.svelte"
-    },
-    "./ExportButton.svelte": {
-      "types": "./dist/export/ExportButton.svelte.d.ts",
-      "svelte": "./dist/export/ExportButton.svelte"
-    },
-    "./ExportButtonGroup.svelte": {
-      "types": "./dist/export/ExportButtonGroup.svelte.d.ts",
-      "svelte": "./dist/export/ExportButtonGroup.svelte"
-    },
-    "./FloatingMenu.svelte": {
-      "types": "./dist/floating-menu/FloatingMenu.svelte.d.ts",
-      "svelte": "./dist/floating-menu/FloatingMenu.svelte"
-    },
-    "./FloatingMenuButton.svelte": {
-      "types": "./dist/floating-menu/FloatingMenuButton.svelte.d.ts",
-      "svelte": "./dist/floating-menu/FloatingMenuButton.svelte"
-    },
-    "./FontButton.svelte": {
-      "types": "./dist/font/FontButton.svelte.d.ts",
-      "svelte": "./dist/font/FontButton.svelte"
-    },
-    "./FontButtonGroup.svelte": {
-      "types": "./dist/font/FontButtonGroup.svelte.d.ts",
-      "svelte": "./dist/font/FontButtonGroup.svelte"
-    },
-    "./FormatButton.svelte": {
-      "types": "./dist/format/FormatButton.svelte.d.ts",
-      "svelte": "./dist/format/FormatButton.svelte"
-    },
-    "./FormatButtonGroup.svelte": {
-      "types": "./dist/format/FormatButtonGroup.svelte.d.ts",
-      "svelte": "./dist/format/FormatButtonGroup.svelte"
-    },
-    "./GroupCustom.svelte": {
-      "types": "./dist/groups/GroupCustom.svelte.d.ts",
-      "svelte": "./dist/groups/GroupCustom.svelte"
-    },
-    "./HeadingButton.svelte": {
-      "types": "./dist/heading/HeadingButton.svelte.d.ts",
-      "svelte": "./dist/heading/HeadingButton.svelte"
-    },
-    "./HeadingButtonGroup.svelte": {
-      "types": "./dist/heading/HeadingButtonGroup.svelte.d.ts",
-      "svelte": "./dist/heading/HeadingButtonGroup.svelte"
-    },
-    "./ImageButton.svelte": {
-      "types": "./dist/image/ImageButton.svelte.d.ts",
-      "svelte": "./dist/image/ImageButton.svelte"
-    },
-    "./ImageButtonGroup.svelte": {
-      "types": "./dist/image/ImageButtonGroup.svelte.d.ts",
-      "svelte": "./dist/image/ImageButtonGroup.svelte"
-    },
-    "./InvisibleButton.svelte": {
-      "types": "./dist/invisible-characters/InvisibleButton.svelte.d.ts",
-      "svelte": "./dist/invisible-characters/InvisibleButton.svelte"
-    },
-    "./InvisibleButtonGroup.svelte": {
-      "types": "./dist/invisible-characters/InvisibleButtonGroup.svelte.d.ts",
-      "svelte": "./dist/invisible-characters/InvisibleButtonGroup.svelte"
-    },
-    "./Paragraph.svelte": {
-      "types": "./dist/invisible-characters/Paragraph.svelte.d.ts",
-      "svelte": "./dist/invisible-characters/Paragraph.svelte"
-    },
-    "./LayoutButton.svelte": {
-      "types": "./dist/layout/LayoutButton.svelte.d.ts",
-      "svelte": "./dist/layout/LayoutButton.svelte"
-    },
-    "./LayoutButtonGroup.svelte": {
-      "types": "./dist/layout/LayoutButtonGroup.svelte.d.ts",
-      "svelte": "./dist/layout/LayoutButtonGroup.svelte"
-    },
-    "./ListButton.svelte": {
-      "types": "./dist/list/ListButton.svelte.d.ts",
-      "svelte": "./dist/list/ListButton.svelte"
-    },
-    "./ListButtonGroup.svelte": {
-      "types": "./dist/list/ListButtonGroup.svelte.d.ts",
-      "svelte": "./dist/list/ListButtonGroup.svelte"
-    },
-    "./MentionList.svelte": {
-      "types": "./dist/mention/MentionList.svelte.d.ts",
-      "svelte": "./dist/mention/MentionList.svelte"
-    },
-    "./HtmlCodeButton.svelte": {
-      "types": "./dist/source/HtmlCodeButton.svelte.d.ts",
-      "svelte": "./dist/source/HtmlCodeButton.svelte"
-    },
-    "./SourceButton.svelte": {
-      "types": "./dist/source/SourceButton.svelte.d.ts",
-      "svelte": "./dist/source/SourceButton.svelte"
-    },
-    "./SourceButtonGroup.svelte": {
-      "types": "./dist/source/SourceButtonGroup.svelte.d.ts",
-      "svelte": "./dist/source/SourceButtonGroup.svelte"
-    },
-    "./TableButton.svelte": {
-      "types": "./dist/table/TableButton.svelte.d.ts",
-      "svelte": "./dist/table/TableButton.svelte"
-    },
-    "./TableButtonGroup1.svelte": {
-      "types": "./dist/table/TableButtonGroup1.svelte.d.ts",
-      "svelte": "./dist/table/TableButtonGroup1.svelte"
-    },
-    "./TableButtonGroup2.svelte": {
-      "types": "./dist/table/TableButtonGroup2.svelte.d.ts",
-      "svelte": "./dist/table/TableButtonGroup2.svelte"
-    },
-    "./TaskListButton.svelte": {
-      "types": "./dist/task/TaskListButton.svelte.d.ts",
-      "svelte": "./dist/task/TaskListButton.svelte"
-    },
-    "./TaskListButtonGroup.svelte": {
-      "types": "./dist/task/TaskListButtonGroup.svelte.d.ts",
-      "svelte": "./dist/task/TaskListButtonGroup.svelte"
-    },
-    "./Toc.svelte": {
-      "types": "./dist/toc/Toc.svelte.d.ts",
-      "svelte": "./dist/toc/Toc.svelte"
-    },
-    "./UndoRedo.svelte": {
-      "types": "./dist/undo-redo/UndoRedo.svelte.d.ts",
-      "svelte": "./dist/undo-redo/UndoRedo.svelte"
-    },
-    "./UndoRedoButtonGroup.svelte": {
-      "types": "./dist/undo-redo/UndoRedoButtonGroup.svelte.d.ts",
-      "svelte": "./dist/undo-redo/UndoRedoButtonGroup.svelte"
-    },
-    "./ContentWrapper.svelte": {
-      "types": "./dist/wrappers/ContentWrapper.svelte.d.ts",
-      "svelte": "./dist/wrappers/ContentWrapper.svelte"
-    },
-    "./Divider.svelte": {
-      "types": "./dist/wrappers/Divider.svelte.d.ts",
-      "svelte": "./dist/wrappers/Divider.svelte"
-    },
-    "./EditorWrapper.svelte": {
-      "types": "./dist/wrappers/EditorWrapper.svelte.d.ts",
-      "svelte": "./dist/wrappers/EditorWrapper.svelte"
-    },
-    "./ToolbarRowWrapper.svelte": {
-      "types": "./dist/wrappers/ToolbarRowWrapper.svelte.d.ts",
-      "svelte": "./dist/wrappers/ToolbarRowWrapper.svelte"
-    },
-    "./ToolbarWrapper.svelte": {
-      "types": "./dist/wrappers/ToolbarWrapper.svelte.d.ts",
-      "svelte": "./dist/wrappers/ToolbarWrapper.svelte"
-    },
-    "./YoutubeButton.svelte": {
-      "types": "./dist/youtube/YoutubeButton.svelte.d.ts",
-      "svelte": "./dist/youtube/YoutubeButton.svelte"
-    },
-    "./YoutubeButtonGroup.svelte": {
-      "types": "./dist/youtube/YoutubeButtonGroup.svelte.d.ts",
-      "svelte": "./dist/youtube/YoutubeButtonGroup.svelte"
-    },
-    "./package.json": "./package.json"
-  }
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "svelte": "./dist/index.js"
+        },
+        "./types": {
+            "types": "./dist/types.d.ts",
+            "import": "./dist/types.js",
+            "default": "./dist/types.js"
+        },
+        "./EditorConfig.svelte": {
+            "types": "./dist/EditorConfig.svelte.d.ts",
+            "svelte": "./dist/EditorConfig.svelte"
+        },
+        "./TextEditor.svelte": {
+            "types": "./dist/TextEditor.svelte.d.ts",
+            "svelte": "./dist/TextEditor.svelte"
+        },
+        "./AlignmentButton.svelte": {
+            "types": "./dist/alignment/AlignmentButton.svelte.d.ts",
+            "svelte": "./dist/alignment/AlignmentButton.svelte"
+        },
+        "./AlignmentButtonGroup.svelte": {
+            "types": "./dist/alignment/AlignmentButtonGroup.svelte.d.ts",
+            "svelte": "./dist/alignment/AlignmentButtonGroup.svelte"
+        },
+        "./BubbleMenu.svelte": {
+            "types": "./dist/bubble-menu/BubbleMenu.svelte.d.ts",
+            "svelte": "./dist/bubble-menu/BubbleMenu.svelte"
+        },
+        "./CharacterCount.svelte": {
+            "types": "./dist/charcter-count/CharacterCount.svelte.d.ts",
+            "svelte": "./dist/charcter-count/CharacterCount.svelte"
+        },
+        "./DetailsButton.svelte": {
+            "types": "./dist/details/DetailsButton.svelte.d.ts",
+            "svelte": "./dist/details/DetailsButton.svelte"
+        },
+        "./DetailsButtonGroup.svelte": {
+            "types": "./dist/details/DetailsButtonGroup.svelte.d.ts",
+            "svelte": "./dist/details/DetailsButtonGroup.svelte"
+        },
+        "./DragHandle.svelte": {
+            "types": "./dist/drag-handle/DragHandle.svelte.d.ts",
+            "svelte": "./dist/drag-handle/DragHandle.svelte"
+        },
+        "./EditableButton.svelte": {
+            "types": "./dist/editable/EditableButton.svelte.d.ts",
+            "svelte": "./dist/editable/EditableButton.svelte"
+        },
+        "./EmojiList.svelte": {
+            "types": "./dist/emoji/EmojiList.svelte.d.ts",
+            "svelte": "./dist/emoji/EmojiList.svelte"
+        },
+        "./ExportButton.svelte": {
+            "types": "./dist/export/ExportButton.svelte.d.ts",
+            "svelte": "./dist/export/ExportButton.svelte"
+        },
+        "./ExportButtonGroup.svelte": {
+            "types": "./dist/export/ExportButtonGroup.svelte.d.ts",
+            "svelte": "./dist/export/ExportButtonGroup.svelte"
+        },
+        "./FloatingMenu.svelte": {
+            "types": "./dist/floating-menu/FloatingMenu.svelte.d.ts",
+            "svelte": "./dist/floating-menu/FloatingMenu.svelte"
+        },
+        "./FloatingMenuButton.svelte": {
+            "types": "./dist/floating-menu/FloatingMenuButton.svelte.d.ts",
+            "svelte": "./dist/floating-menu/FloatingMenuButton.svelte"
+        },
+        "./FontButton.svelte": {
+            "types": "./dist/font/FontButton.svelte.d.ts",
+            "svelte": "./dist/font/FontButton.svelte"
+        },
+        "./FontButtonGroup.svelte": {
+            "types": "./dist/font/FontButtonGroup.svelte.d.ts",
+            "svelte": "./dist/font/FontButtonGroup.svelte"
+        },
+        "./FormatButton.svelte": {
+            "types": "./dist/format/FormatButton.svelte.d.ts",
+            "svelte": "./dist/format/FormatButton.svelte"
+        },
+        "./FormatButtonGroup.svelte": {
+            "types": "./dist/format/FormatButtonGroup.svelte.d.ts",
+            "svelte": "./dist/format/FormatButtonGroup.svelte"
+        },
+        "./GroupCustom.svelte": {
+            "types": "./dist/groups/GroupCustom.svelte.d.ts",
+            "svelte": "./dist/groups/GroupCustom.svelte"
+        },
+        "./HeadingButton.svelte": {
+            "types": "./dist/heading/HeadingButton.svelte.d.ts",
+            "svelte": "./dist/heading/HeadingButton.svelte"
+        },
+        "./HeadingButtonGroup.svelte": {
+            "types": "./dist/heading/HeadingButtonGroup.svelte.d.ts",
+            "svelte": "./dist/heading/HeadingButtonGroup.svelte"
+        },
+        "./ImageButton.svelte": {
+            "types": "./dist/image/ImageButton.svelte.d.ts",
+            "svelte": "./dist/image/ImageButton.svelte"
+        },
+        "./ImageButtonGroup.svelte": {
+            "types": "./dist/image/ImageButtonGroup.svelte.d.ts",
+            "svelte": "./dist/image/ImageButtonGroup.svelte"
+        },
+        "./InvisibleButton.svelte": {
+            "types": "./dist/invisible-characters/InvisibleButton.svelte.d.ts",
+            "svelte": "./dist/invisible-characters/InvisibleButton.svelte"
+        },
+        "./InvisibleButtonGroup.svelte": {
+            "types": "./dist/invisible-characters/InvisibleButtonGroup.svelte.d.ts",
+            "svelte": "./dist/invisible-characters/InvisibleButtonGroup.svelte"
+        },
+        "./Paragraph.svelte": {
+            "types": "./dist/invisible-characters/Paragraph.svelte.d.ts",
+            "svelte": "./dist/invisible-characters/Paragraph.svelte"
+        },
+        "./LayoutButton.svelte": {
+            "types": "./dist/layout/LayoutButton.svelte.d.ts",
+            "svelte": "./dist/layout/LayoutButton.svelte"
+        },
+        "./LayoutButtonGroup.svelte": {
+            "types": "./dist/layout/LayoutButtonGroup.svelte.d.ts",
+            "svelte": "./dist/layout/LayoutButtonGroup.svelte"
+        },
+        "./ListButton.svelte": {
+            "types": "./dist/list/ListButton.svelte.d.ts",
+            "svelte": "./dist/list/ListButton.svelte"
+        },
+        "./ListButtonGroup.svelte": {
+            "types": "./dist/list/ListButtonGroup.svelte.d.ts",
+            "svelte": "./dist/list/ListButtonGroup.svelte"
+        },
+        "./MentionList.svelte": {
+            "types": "./dist/mention/MentionList.svelte.d.ts",
+            "svelte": "./dist/mention/MentionList.svelte"
+        },
+        "./HtmlCodeButton.svelte": {
+            "types": "./dist/source/HtmlCodeButton.svelte.d.ts",
+            "svelte": "./dist/source/HtmlCodeButton.svelte"
+        },
+        "./SourceButton.svelte": {
+            "types": "./dist/source/SourceButton.svelte.d.ts",
+            "svelte": "./dist/source/SourceButton.svelte"
+        },
+        "./SourceButtonGroup.svelte": {
+            "types": "./dist/source/SourceButtonGroup.svelte.d.ts",
+            "svelte": "./dist/source/SourceButtonGroup.svelte"
+        },
+        "./TableButton.svelte": {
+            "types": "./dist/table/TableButton.svelte.d.ts",
+            "svelte": "./dist/table/TableButton.svelte"
+        },
+        "./TableButtonGroup1.svelte": {
+            "types": "./dist/table/TableButtonGroup1.svelte.d.ts",
+            "svelte": "./dist/table/TableButtonGroup1.svelte"
+        },
+        "./TableButtonGroup2.svelte": {
+            "types": "./dist/table/TableButtonGroup2.svelte.d.ts",
+            "svelte": "./dist/table/TableButtonGroup2.svelte"
+        },
+        "./TaskListButton.svelte": {
+            "types": "./dist/task/TaskListButton.svelte.d.ts",
+            "svelte": "./dist/task/TaskListButton.svelte"
+        },
+        "./TaskListButtonGroup.svelte": {
+            "types": "./dist/task/TaskListButtonGroup.svelte.d.ts",
+            "svelte": "./dist/task/TaskListButtonGroup.svelte"
+        },
+        "./Toc.svelte": {
+            "types": "./dist/toc/Toc.svelte.d.ts",
+            "svelte": "./dist/toc/Toc.svelte"
+        },
+        "./UndoRedo.svelte": {
+            "types": "./dist/undo-redo/UndoRedo.svelte.d.ts",
+            "svelte": "./dist/undo-redo/UndoRedo.svelte"
+        },
+        "./UndoRedoButtonGroup.svelte": {
+            "types": "./dist/undo-redo/UndoRedoButtonGroup.svelte.d.ts",
+            "svelte": "./dist/undo-redo/UndoRedoButtonGroup.svelte"
+        },
+        "./ContentWrapper.svelte": {
+            "types": "./dist/wrappers/ContentWrapper.svelte.d.ts",
+            "svelte": "./dist/wrappers/ContentWrapper.svelte"
+        },
+        "./Divider.svelte": {
+            "types": "./dist/wrappers/Divider.svelte.d.ts",
+            "svelte": "./dist/wrappers/Divider.svelte"
+        },
+        "./EditorWrapper.svelte": {
+            "types": "./dist/wrappers/EditorWrapper.svelte.d.ts",
+            "svelte": "./dist/wrappers/EditorWrapper.svelte"
+        },
+        "./ToolbarRowWrapper.svelte": {
+            "types": "./dist/wrappers/ToolbarRowWrapper.svelte.d.ts",
+            "svelte": "./dist/wrappers/ToolbarRowWrapper.svelte"
+        },
+        "./ToolbarWrapper.svelte": {
+            "types": "./dist/wrappers/ToolbarWrapper.svelte.d.ts",
+            "svelte": "./dist/wrappers/ToolbarWrapper.svelte"
+        },
+        "./YoutubeButton.svelte": {
+            "types": "./dist/youtube/YoutubeButton.svelte.d.ts",
+            "svelte": "./dist/youtube/YoutubeButton.svelte"
+        },
+        "./YoutubeButtonGroup.svelte": {
+            "types": "./dist/youtube/YoutubeButtonGroup.svelte.d.ts",
+            "svelte": "./dist/youtube/YoutubeButtonGroup.svelte"
+        },
+        "./package.json": "./package.json"
+    }
 }

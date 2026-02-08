@@ -1,14 +1,14 @@
 {
-  "name": "FontButtonGroup",
-  "type": {
-    "name": "FontButtonGroupProps",
-    "link": "https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L304"
-  },
-  "props": [
-    ["editor", ""],
-    ["showToolbar", "true"],
-    ["fontFamily", "true"],
-    ["fontSize", "true"],
-    ["textColor", "true"]
-  ]
+    "name": "FontButtonGroup",
+    "type": {
+        "name": "FontButtonGroupProps",
+        "link": "https://github.com/themesberg/flowbite-svelte/blob/main/src/lib/types.ts#L304"
+    },
+    "props": [
+        ["editor", ""],
+        ["showToolbar", "true"],
+        ["fontFamily", "true"],
+        ["fontSize", "true"],
+        ["textColor", "true"]
+    ]
 }

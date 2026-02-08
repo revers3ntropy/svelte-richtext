@@ -1,16 +1,21 @@
 <script lang="ts">
-  import { type YoutubeButtonGroupProps, YoutubeButton } from '$lib';
+    import { type YoutubeButtonGroupProps, YoutubeButton } from '$lib';
 
-  let { editor, showToolbar = true, basic = true, advanced = true }: YoutubeButtonGroupProps = $props();
+    let {
+        editor,
+        showToolbar = true,
+        basic = true,
+        advanced = true
+    }: YoutubeButtonGroupProps = $props();
 </script>
 
 {#if editor && showToolbar}
-  {#if basic}
-    <YoutubeButton {editor} />
-  {/if}
-  {#if advanced}
-    <YoutubeButton {editor} format="advanced" />
-  {/if}
+    {#if basic}
+        <YoutubeButton {editor} />
+    {/if}
+    {#if advanced}
+        <YoutubeButton {editor} format="advanced" />
+    {/if}
 {/if}
 
 <!--
