@@ -1,8 +1,6 @@
 import type { PageLoad } from './$types';
 import type { MetaProps } from 'runes-meta-tags';
-import { metaTitle, metaDescription, metaImg, splitAndCapitalize } from 'runes-meta-tags';
-
-const siteName = 'Flowbite-Svelte-TextEditor';
+import { metaDescription } from 'runes-meta-tags';
 
 export const load: PageLoad = async ({ params, url }) => {
   // Dynamic import for the content

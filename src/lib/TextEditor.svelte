@@ -390,7 +390,7 @@
         editor: editor!,
         element: floatingElement,
         pluginKey: 'floatingMenu',
-        shouldShow: ({ editor, view, state, oldState, from, to }) => {
+        shouldShow: ({ editor, view, state }) => {
           const { selection } = state;
           const { empty } = selection;
           const anchor = selection.$anchor;
