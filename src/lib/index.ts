@@ -1,7 +1,7 @@
 export * from './types';
 export * from './utils';
 export * from './editorCommands';
-export * from './useEditableContext.svelte';
+export * from './useEditableContext.svelte.js';
 
 export { default as TextEditor } from './TextEditor.svelte';
 export { default as EditorConfig } from './EditorConfig.svelte';
