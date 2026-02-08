@@ -1,4 +1,9 @@
-# @flowbite-svelte-plugins/texteditor
+# svelte-flowbite-rich-text-editor
+
+This package is a fork of @flowbite-svelte-plugins/texteditor
+([Github](https://github.com/shinokada/flowbite-svelte-plugins/tree/main/apps/flowbite-svelte-texteditor),
+[NPM](https://www.npmjs.com/package/@flowbite-svelte-plugins/texteditor))
+ and can be used as a drop-in replacement.
 
 [Documentation](https://flowbite-svelte.com/docs/plugins/wysiwyg)
 
@@ -8,7 +13,7 @@ headings, images and styling them using all available options.
 ## Installation
 
 ```bash
-pnpm i -D @flowbite-svelte-plugins/texteditor
+pnpm i -D svelte-flowbite-rich-text-editor
 ```
 
 ## Text editor example
@@ -25,10 +30,11 @@ pnpm i -D @flowbite-svelte-plugins/texteditor
         ListButtonGroup,
         YoutubeButtonGroup,
         TextEditor,
+        EditorConfig,
         ToolbarRowWrapper,
         Divider,
         SourceButton
-    } from '@flowbite-svelte-plugins/texteditor';
+    } from 'svelte-flowbite-rich-text-editor';
     import type { Editor } from '@tiptap/core';
     import { Button } from 'flowbite-svelte';
 
@@ -63,27 +69,34 @@ pnpm i -D @flowbite-svelte-plugins/texteditor
     />
 </svelte:head>
 
-<TextEditor bind:editor={editorInstance} {content}>
-    <ToolbarRowWrapper>
-        <FormatButtonGroup editor={editorInstance} />
-        <Divider />
-        <FontButtonGroup editor={editorInstance} />
-        <Divider />
-        <AlignmentButtonGroup editor={editorInstance} />
-    </ToolbarRowWrapper>
-    <ToolbarRowWrapper top={false}>
-        <UndoRedoButtonGroup editor={editorInstance} />
-        <Divider />
-        <LayoutButtonGroup editor={editorInstance} />
-        <Divider />
-        <ListButtonGroup editor={editorInstance} />
-        <Divider />
-        <ImageButtonGroup editor={editorInstance} />
-        <Divider />
-        <YoutubeButtonGroup editor={editorInstance} />
-        <SourceButton editor={editorInstance} />
-    </ToolbarRowWrapper>
-</TextEditor>
+<EditorConfig
+    imageOptions={{
+        inline: true,
+        allowBase64: true
+    }}
+>
+    <TextEditor bind:editor={editorInstance} {content}>
+        <ToolbarRowWrapper>
+            <FormatButtonGroup editor={editorInstance} />
+            <Divider />
+            <FontButtonGroup editor={editorInstance} />
+            <Divider />
+            <AlignmentButtonGroup editor={editorInstance} />
+        </ToolbarRowWrapper>
+        <ToolbarRowWrapper top={false}>
+            <UndoRedoButtonGroup editor={editorInstance} />
+            <Divider />
+            <LayoutButtonGroup editor={editorInstance} />
+            <Divider />
+            <ListButtonGroup editor={editorInstance} />
+            <Divider />
+            <ImageButtonGroup editor={editorInstance} />
+            <Divider />
+            <YoutubeButtonGroup editor={editorInstance} />
+            <SourceButton editor={editorInstance} />
+        </ToolbarRowWrapper>
+    </TextEditor>
+</EditorConfig>
 
 <div class="mt-4">
     <Button onclick={() => console.log(getEditorContent())}>Get Content</Button>
