@@ -11,7 +11,6 @@ export default defineConfig({
   define: {
     __NAME__: JSON.stringify(pkg.name),
     __VERSION__: JSON.stringify(pkg.version),
-    __GITHUBURL__: JSON.stringify(pkg.repository.url),
     __TIPTAP__: JSON.stringify(tiptapPackage.version)
   },
   test: {

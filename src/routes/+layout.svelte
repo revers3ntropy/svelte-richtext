@@ -6,7 +6,6 @@
 
   let { children, data } = $props();
 
-  const repositoryUrl = __GITHUBURL__.replace('git+', '');
   const version = __VERSION__;
   const examples: Array<{ label: string; path: string }> = data.allExamples || [];
 
@@ -43,7 +42,6 @@
     <NavHamburger />
     <NavUl>
       <NavLi href="/">Home</NavLi>
-      <NavLi href={repositoryUrl} target="_blank">Github</NavLi>
       <NavLi href="https://flowbite-svelte.com/docs/plugins/wysiwyg" target="_blank">Docs</NavLi>
       <NavLi href="https://www.npmjs.com/package/@flowbite-svelte-plugins/texteditor?activeTab=versions" target="_blank">v{version}</NavLi>
       <DarkMode class="p-1 md:ms-8" />
