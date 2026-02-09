@@ -56,6 +56,65 @@ import { type ClassValue } from 'clsx';
 import type { Snippet } from 'svelte';
 import type { HTMLButtonAttributes, HTMLAttributes } from 'svelte/elements';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // TextEditor
 export interface BubbleMenuConfig {
     showUnderline?: boolean;
@@ -157,6 +216,7 @@ export interface EditorProviderProps {
     contentprops?: ContentProps;
     isEditable?: boolean;
     autofocusPosition?: FocusPosition;
+    toolbarWrapperClass?: string;
 }
 
 type ContentProps = {

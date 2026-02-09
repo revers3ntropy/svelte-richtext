@@ -90,7 +90,8 @@
         toc,
         contentprops,
         isEditable = true,
-        autofocusPosition = false
+        autofocusPosition = false,
+        toolbarWrapperClass = ''
     }: EditorProviderProps = $props();
 
     const editableContext: EditableContext = {
@@ -497,7 +498,7 @@
 
 <EditorWrapper class={cn(className)}>
     {#if children && editor}
-        <ToolbarWrapper>
+        <ToolbarWrapper class={toolbarWrapperClass}>
             {@render children()}
         </ToolbarWrapper>
     {/if}
